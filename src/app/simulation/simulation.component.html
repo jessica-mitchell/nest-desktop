@@ -33,6 +33,14 @@
     </mat-list-option>
   </mat-selection-list>
 
+  <mat-nav-list dense style="padding:0">
+    <mat-list-item class="mat-menu-item" (click)="download()">
+      <fa-icon class="menu-icon" icon="download"></fa-icon>
+      <span *ngIf="!hasRecords()"> Download data</span>
+      <span *ngIf="hasRecords()"> Download data and records</span>
+    </mat-list-item>
+  </mat-nav-list>
+
 </mat-menu>
 
 <ng-container *ngIf="data.hasOwnProperty('app'); else loading">
@@ -216,7 +224,7 @@
           <ng-template #noRecords>
               <div style="height:100%" class="flex">
                 <span style="margin:auto">
-                  <span style="margin-left: 8px">No records found.</span>
+                  <span style="margin-left: 8px">No record found. Please simulate.</span>
                 </span>
               </div>
           </ng-template>
