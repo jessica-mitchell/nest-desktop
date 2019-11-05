@@ -8,13 +8,21 @@ NEST Desktop
    :align: left
 
 |
-|
 
 Hello there!
 
+Welcome to the documentation for NEST Desktop!
+
+NEST Desktop is a web-based GUI application for NEST Simulator,
+an advanced simulation tool for the computational neuroscience.
+
+The app enables the rapid construction, parametrization,
+and instrumentation of neuronal network models.
+
+|
 It's so great that you want to use NEST Desktop.
 
-Let's get started.
+**Let's get started!**
 
 |
 
@@ -23,7 +31,7 @@ Let's get started.
 How the documentation is organized
 ----------------------------------
 
-The documentation is organized in three sections addressing to the interest of reader.
+The documentation is organized into three sections. Select the appropriate section that fits your needs.
 
 .. raw:: html
 
@@ -34,8 +42,8 @@ The documentation is organized in three sections addressing to the interest of r
             <img src="_static/font-awesome/user.svg">
             <h2>The User</h2>
             <p>
-              ... learns how to build network, parameterize nodes and links,
-              and perform simulations on graphical interface.
+              ... learns how to build networks, parameterize nodes and links,
+              and perform simulations on the graphical interface.
             </p>
             <span class="whoami">I am a user.</span>
           </div>
@@ -48,7 +56,7 @@ The documentation is organized in three sections addressing to the interest of r
             <img src="_static/font-awesome/user-cog.svg">
             <h2>The Deployer</h2>
             <p>
-              ... learns how to setup NEST Desktop on a machine via Python Package, Docker or Singularity installation.
+              ... learns how to set up NEST Desktop on a machine via the Python Package, Docker or Singularity installation.
             </p>
             <span class="whoami">I am a deployer.</span>
           </div>
@@ -61,7 +69,7 @@ The documentation is organized in three sections addressing to the interest of r
             <img src="_static/font-awesome/user-edit.svg">
             <h2>The Developer</h2>
             <p>
-              ... learns the source code architecture of NEST Desktop and how to contribute own codes.
+              ... learns the source code architecture of NEST Desktop and how to contribute code or enhancements to the project.
             </p>
             <span class="whoami">I am a developer.</span>
           </div>

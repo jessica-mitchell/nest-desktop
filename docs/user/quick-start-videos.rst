@@ -2,6 +2,8 @@ Quick start videos
 ==================
 
 
+This video provides an overview of the basic features of NEST-Destktop.
+
 .. raw:: html
 
    <embed>
@@ -14,6 +16,9 @@ Quick start videos
 
 Build a network
 ---------------
+
+This video demonstrates how to build a network from scratch
+
 
 .. raw:: html
 

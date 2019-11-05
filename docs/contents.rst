@@ -5,7 +5,6 @@ Contents
    :titlesonly:
 
    index
-   introduction
    abstract
    history
 

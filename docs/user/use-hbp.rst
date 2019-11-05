@@ -1,11 +1,11 @@
-How to use it on HBP resources
-==============================
+How to use NEST Desktop on HBP resources
+=========================================
 
 
-NEST Desktop is integrated in infrastructure of Human Brain Project (HBP).
+NEST Desktop is integrated into the infrastructure of the Human Brain Project (HBP).
 An HBP account is required to access it.
 
-If you have a HBP account, you can go to the link:
+If you have an HBP account, follow the link below:
 
 * http://nest-desktop.apps.hbp.eu.
 
