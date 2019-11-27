@@ -1,6 +1,6 @@
-import { MediaMatcher } from '@angular/cdk/layout';
 import { ChangeDetectorRef, Component, OnInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
+import { MediaMatcher } from '@angular/cdk/layout';
 
 import { NavigationService } from './navigation/navigation.service';
 import { AppConfigService } from './config/app-config/app-config.service';
@@ -15,13 +15,10 @@ import * as math from 'mathjs';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit, OnDestroy {
-  public mobileQuery: MediaQueryList;
   @ViewChild('content', { static: false }) content: ElementRef;
+  public mobileQuery: MediaQueryList;
   public ready: boolean = false;
-  public buttonDisplay: string = '0.2';
-
   private _mobileQueryListener: () => void;
-
 
   constructor(
     private changeDetectorRef: ChangeDetectorRef,
@@ -31,38 +28,60 @@ export class AppComponent implements OnInit, OnDestroy {
     public _navigationService: NavigationService,
     public router: Router,
   ) {
-    this.mobileQuery = media.matchMedia('(max-width: 600px)');
+    this.mobileQuery = media.matchMedia('(max-width: 1023px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
   }
 
   ngOnInit() {
-    window['math'] = math;
+    if (window.location.href.includes('.hbp.eu')) {
+      this.resolveAuthOpenidcSession()
+    }
   }
 
   ngOnDestroy(): void {
     this.mobileQuery.removeListener(this._mobileQueryListener);
   }
 
+  getCookie(name: string): string {
+    var cookie = document.cookie;
+    var prefix = name + "=";
+    var begin = cookie.indexOf("; " + prefix);
+    if (begin == -1) {
+      begin = cookie.indexOf(prefix);
+      if (begin != 0) return null;
+    }
+    else {
+      begin += 2;
+      var end = document.cookie.indexOf(";", begin);
+      if (end == -1) {
+        end = cookie.length;
+      }
+    }
+    // because unescape has been deprecated, replaced with decodeURI
+    //return unescape(dc.substring(begin + prefix.length, end));
+    return decodeURI(cookie.substring(begin + prefix.length, end));
+  }
+
+  resolveAuthOpenidcSession(): void {
+    var myCookie = this.getCookie("mod_auth_openidc_session");
+    if (myCookie == null) {
+      window.location.reload();
+    }
+  }
+
   onReady(ready: boolean): void {
     this.ready = ready;
   }
 
-  navigationWidth(): string {
-    return this._navigationService.sidenavShortView ? '40px' : '260px';
-  }
-
-  toggleNavigationOpened(): void {
-    this.buttonDisplay = '0.2';
-    this._navigationService.sidenavShortView = !this._navigationService.sidenavShortView
-  }
-
-  isNavigationOpened(): boolean {
-    return !this._navigationService.sidenavShortView && this._navigationService.sidenavOpened;
-  }
-
   advanced(): boolean {
     return this._appConfigService.config.app['advanced'];
+  }
+
+  triggerResize(): void {
+    if (!this.mobileQuery.matches) {
+      window.dispatchEvent(new Event('resize'));
+    }
   }
 
 }
